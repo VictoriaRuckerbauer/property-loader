@@ -91,6 +91,32 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.17.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>com.tngtech.propertyloader.impl.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.tngtech.propertyloader.impl.*Test</param>
+                        <param>com.tngtech.propertyloader.impl.*Tests</param>
+                    </targetTests>
+                    <fullMutationMatrix>true</fullMutationMatrix>
+                    <outputFormats>
+                        <param>XML</param>
+                        <param>HTML</param>
+                    </outputFormats>
+                </configuration>
+            </plugin>
             <!-- all profiles-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
